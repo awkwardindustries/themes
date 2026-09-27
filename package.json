@@ -1,0 +1,49 @@
+{
+  "name": "awkward-industries-themes",
+  "displayName": "Awkward Industries Themes",
+  "description": "A Cursor / VS Code theme pack.",
+  "version": "0.1.1",
+  "publisher": "awkwardindustries",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/awkwardindustries/themes.git"
+  },
+  "homepage": "https://github.com/awkwardindustries/themes",
+  "engines": {
+    "vscode": "^1.74.0"
+  },
+  "categories": ["Themes"],
+  "keywords": [
+    "theme",
+    "themes",
+    "dark",
+    "severance",
+    "macrodata",
+    "lumen",
+    "crt",
+    "matrix"
+  ],
+  "contributes": {
+    "themes": [
+      {
+        "label": "Macrodata Refinement",
+        "uiTheme": "vs-dark",
+        "path": "./themes/macrodata-refinement-color-theme.json"
+      },
+      {
+        "label": "Matrix",
+        "uiTheme": "vs-dark",
+        "path": "./themes/matrix-color-theme.json"
+      }
+    ]
+  },
+  "galleryBanner": {
+    "color": "#081e28",
+    "theme": "dark"
+  },
+  "scripts": {
+    "build": "npm run build:macrodata-refinement",
+    "build:macrodata-refinement": "node scripts/build-macrodata-refinement.mjs sources/macrodata-refinement/skaldalfar-user-settings.txt"
+  }
+}
