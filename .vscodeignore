@@ -1,4 +1,5 @@
 .vscode/**
+.github/**
 .cursor/**
 scripts/**
 sources/**

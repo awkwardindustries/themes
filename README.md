@@ -13,16 +13,21 @@ To add another theme later: put the JSON in `themes/`, register it in `contribut
 
 ## Install
 
+Download the latest `.vsix` from [Releases](https://github.com/awkwardindustries/themes/releases), then:
+
+```bash
+cursor --install-extension awkward-industries-themes-0.1.1.vsix
+```
+
+Or install from this repo:
+
 1. Clone this repo.
 2. Command Palette → **Developer: Install Extension from Location...**
 3. Select this folder.
 4. Command Palette → **Preferences: Color Theme** and choose a theme from the pack.
 
-Or from a terminal in this folder:
-
 ```bash
-npm run build
-npx @vscode/vsce package --no-dependencies
+npm run package
 cursor --install-extension awkward-industries-themes-0.1.1.vsix
 ```
 

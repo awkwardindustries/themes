@@ -1,0 +1,43 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Build themes
+        run: npm run build
+
+      - name: Package VSIX
+        id: pkg
+        run: |
+          npx --yes @vscode/vsce package --no-dependencies
+          echo "vsix=$(ls *.vsix)" >> "$GITHUB_OUTPUT"
+
+      - name: Publish GitHub release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: ${{ steps.pkg.outputs.vsix }}
+          fail_on_unmatched_files: true
+          generate_release_notes: true
+          body: |
+            Theme pack VSIX for Cursor / VS Code.
+
+            ```bash
+            cursor --install-extension ${{ steps.pkg.outputs.vsix }}
+            ```
+
+            Then choose **Macrodata Refinement** or **Matrix** from **Preferences: Color Theme**.
